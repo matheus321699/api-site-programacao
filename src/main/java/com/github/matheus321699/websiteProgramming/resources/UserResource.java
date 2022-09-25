@@ -39,5 +39,12 @@ public class UserResource {
 				.path("/{id}").buildAndExpand(object.getId()).toUri();
 		return ResponseEntity.created(uri).build();
 	}
+	
+	@RequestMapping(value = "/{id}", method=RequestMethod.PUT)
+	public ResponseEntity<Void> update(@Valid @RequestBody Users obj, @PathVariable Integer id) {
+		Users objUpdated;
+		objUpdated = service.update(obj);
+		return ResponseEntity.noContent().build();
+	}
 
 }

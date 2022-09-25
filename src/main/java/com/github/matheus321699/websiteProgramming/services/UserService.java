@@ -32,4 +32,16 @@ public class UserService {
 		return obj;
 	}
 	
+	public Users update(Users obj) {
+		Users newObj = findByUser(obj.getId());
+		updateDate(newObj, obj);
+		return repo.save(newObj);
+	}
+
+	private void updateDate(Users newObj, Users obj) {
+		newObj.setNome(obj.getNome());
+		newObj.setEmail(obj.getEmail());
+		
+	}
+	
 }
