@@ -42,8 +42,7 @@ public class UserResource {
 	
 	@RequestMapping(value = "/{id}", method=RequestMethod.PUT)
 	public ResponseEntity<Void> update(@Valid @RequestBody Users obj, @PathVariable Integer id) {
-		Users objUpdated;
-		objUpdated = service.update(obj);
+		service.update(obj);
 		return ResponseEntity.noContent().build();
 	}
 	

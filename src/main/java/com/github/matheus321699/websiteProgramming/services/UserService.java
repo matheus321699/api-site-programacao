@@ -9,6 +9,7 @@ import org.hibernate.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
+
 import com.github.matheus321699.websiteProgramming.domain.Users;
 import com.github.matheus321699.websiteProgramming.repositories.UserRepository;
 
@@ -17,6 +18,9 @@ public class UserService {
 	
 	@Autowired
 	UserRepository repo;
+	
+	@Autowired
+	private EmailService emailService;
 
 	public Users findByUser(Integer id) {
 
@@ -30,11 +34,14 @@ public class UserService {
 		// Setar Id para garantir que o objeto inserido é um novo registro
 		obj.setId(null);
 		obj = repo.save(obj);
+		
+		emailService.sendRegistrationConfirmationEmail(obj);
 		return obj;
 	}
 	
 	public Users update(Users obj) {
 		Users newObj = findByUser(obj.getId());
+		
 		updateDate(newObj, obj);
 		return repo.save(newObj);
 	}

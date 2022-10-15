@@ -67,6 +67,16 @@ public class Users implements Serializable {
 	}
 	
 	
-	
+	@Override
+	public String toString() {
+		
+//		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyy hh:mm:ss");
+		
+		StringBuilder builder = new StringBuilder();
+		builder.append("E-mail Cadstrado: ");
+		builder.append(getEmail());
+		
+		return builder.toString();
+	}
 
 }
