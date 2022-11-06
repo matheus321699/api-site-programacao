@@ -35,7 +35,7 @@ public class UserService {
 		obj.setId(null);
 		obj = repo.save(obj);
 		
-		emailService.sendRegistrationConfirmationEmail(obj);
+//		emailService.sendRegistrationConfirmationEmail(obj);
 		return obj;
 	}
 	
